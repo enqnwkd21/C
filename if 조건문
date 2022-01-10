@@ -1,0 +1,135 @@
+#include<stdio.h>
+
+int main()
+{
+    intnum1 = 5;
+ 
+    if(num1 == 10);    // if 조건문 끝에는 세미콜론을 붙이면 안 됨
+{
+        printf("10입니다.\n");
+    }
+ 
+    return0;
+}
+* 주의 : if 조건문 끝에는 세미콜론을 붙이면 안 됨
+if 조건문 뒤에 세미콜론이 붙으면 if와 printf는 전혀 관계가 없이 떨어진 상태
+
+--사용자가 입력한 값에 if 조건문 사용하기
+#define _CRT_SECURE_NO_WARNINGS    // scanf 보안 경고로 인한 컴파일 에러 방지
+#include <stdio.h>
+
+int main()
+{
+    int num1;
+
+    scanf("%d", &num1);    // 입력받은 값을 변수에 저장
+
+    if (num1 == 10)             // num1이 10이면
+    {
+        printf("10입니다.\n");  // "10입니다."를 출력
+    }
+
+    if (num1 == 20)             // num1이 20이면
+    {
+        printf("20입니다.\n");  // "20입니다."를 출력
+    }
+
+    return 0;
+}
+
+
+--else와 세미콜론
+#include <stdio.h>
+
+int main()
+{
+    int num1 = 10;
+
+    if (num1 == 10)
+    {
+        printf("10입니다.\n");
+    }
+    else;    // else에 세미콜론을 붙이면 안 됨
+    {
+        printf("10이 아닙니다.\n");    // else에 세미콜론을 붙였으므로 
+                                      // if의 결과와는 관계 없이 항상 실행됨
+    }
+
+    return 0;
+}
+
+[실행 결과]
+10입니다.
+10이 아닙니다.
+
+--조건식을 여러 개 지정하기
+1. if 조건문에는 논리 연산자를 사용하여 조건식을 여러 개 지정 가능
+#include <stdio.h>
+
+int main()
+{
+    int num1 = 10;
+    int num2 = 20;
+
+    if (num1 == 10 && num2 == 20)    // num1이 10이면서 num2이 20일 때
+        printf("참\n");
+    else
+        printf("거짓\n");
+
+    return 0;
+}
+
+
+
+2. if 조건문는 안에 다시 if 조건문을 넣어서 여러 번 판단 가능. (중첩 if문)
+이때, 안쪽에 있는 if 조건문에서 실행할 코드가 한 줄인 경우 안쪽과 바깥쪽 if 조건문 모두 중괄호를 생략 가능
+  
+int num1 = 10;
+int num2 = 20;
+
+if (num1 == 10)
+{
+    if (num2 == 20)    // if 조건문 안에 if 조건문이 들어감
+    {
+        printf("참\n");
+    }
+    else
+    {
+        printf("거짓\n");
+    }
+}
+else
+{
+    printf("거짓\n");
+}
+
+#include <stdio.h>
+
+int main()
+{
+    int num1 = 20;
+
+    if (num1 == 10)
+        printf("10입니다.\n");
+    else if (num1 == 20)    // else인 상태에서 조건식 지정
+        printf("20입니다.\n");
+
+    return 0;
+}
+
+
+#include <stdio.h>
+
+int main()
+{
+    int num1 = 30;
+
+    if (num1 == 10)        // num1이 10일 때
+        printf("10입니다.\n");
+    else if (num1 == 20)   // num1이 20일 때
+        printf("20입니다.\n");
+    else                   // 앞의 조건식에 모두 만족하지 않을 때
+        printf("10도 20도 아닙니다.\n");
+
+    return 0;
+}
