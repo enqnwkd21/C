@@ -1,0 +1,133 @@
+-- 덧셈 함수 만들기
+#include <stdio.h>
+
+int add(int a, int b)    // 반환값 자료형은 int, int형 매개변수 두 개 지정
+{
+    return a + b;    // 매개변수 a와 b를 더한 결과를 반환
+}
+
+int main()
+{
+    int num1;
+
+    num1 = add(10, 20);     // 함수를 호출할 때 10과 20을 전달. 10과 20을 더한 값인 30이 반환됨
+
+    printf("%d\n", num1);   // 30
+
+    return 0;
+}
+
+
+--포인터 매개변수 사용하기
+#include <stdio.h>
+
+void swapNumber(int first, int second)    // 반환값 없음, int형 매개변수 두 개 지정
+{
+    int temp;    // 임시 보관 변수
+
+    temp = first;
+    first = second;
+    second = temp;
+}
+
+int main()
+{
+    int num1 = 10;
+    int num2 = 20;
+
+    swapNumber(num1, num2);    // 변수 num1과 num2를 넣어줌
+
+    printf("%d %d\n", num1, num2);    // 10 20: swapNumber 함수와는 상관없이 
+                                      // 처음 저장한 10과 20이 출력됨
+
+    return 0;
+}
+실행 결과
+10 20
+
+--
+#include <stdio.h>
+
+void swapNumber(int *first, int *second)    // 반환값 없음, int 포인터 매개변수 두 개 지정
+{
+    int temp;    // 임시 보관 변수
+
+    // 역참조로 값을 가져오고, 값을 저장함
+    temp = *first;
+    *first = *second;
+    *second = temp;
+}
+
+int main()
+{
+    int num1 = 10;
+    int num2 = 20;
+
+    swapNumber(&num1, &num2);        // &를 사용하여 num1과 num2의 메모리 주소를 넣어줌
+
+    printf("%d %d\n", num1, num2);   // 20 10: swapNumber에 의해서 
+                                     // num1과 num2의 값이 서로 바뀜
+
+    return 0;
+}
+[실행 결과]
+20 10
+
+--문자열 매개변수 사용하기
+함수에서 매개변수로 문자열을 받으려면 다음과 같이 매개변수를 문자열 포인터로 지정
+
+#include <stdio.h>
+
+void helloString(char *s1)    // 반환값 없음, char 포인터 매개변수 한 개 지정
+{
+    printf("Hello, %s\n", s1);    // Hello, 와 매개변수를 조합하여 문자열 출력
+}
+
+int main()
+{
+    helloString("world!");    // Hello, world!: 함수를 호출할 때 문자열의 주소가 매개변수에 전달
+
+    return 0;
+}
+실행 결과
+Hello, world!
+
+--
+#include <stdio.h>
+
+void helloString(char *s1)    // 반환값 없음, char 포인터 매개변수 한 개 지정
+{
+    printf("Hello, %s\n", s1);    // Hello, 와 매개변수를 조합하여 문자열 출력
+}
+
+int main()
+{
+    char s1[10] = "world!";    // 배열 형태의 문자열
+
+    helloString(s1);    // Hello, world!: 함수를 호출할 때 배열 전달
+
+    return 0;
+}
+실행 결과
+Hello, world!
+
+--
+#include <stdio.h>
+
+void helloString(char s1[])    // 반환값 없음, char 배열을 매개변수로 지정, 크기 생략
+{
+    printf("Hello, %s\n", s1);    // Hello, 와 매개변수를 조합하여 문자열 출력
+}
+
+int main()
+{
+    char s1[10] = "world!";   // 배열 형태의 문자열
+
+    helloString(s1);          // Hello, world!: 함수를 호출할 때 배열 전달
+    helloString("world!");    // Hello, world!: 함수를 호출할 때 문자열 전달
+
+    return 0;
+}
+실행 결과
+Hello, world!
+Hello, world!
