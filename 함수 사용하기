@@ -1,0 +1,136 @@
+#include <stdio.h>
+
+void hello()    // 반환값이 없는 hello 함수 정의
+{
+    printf("Hello, world!\n");    // Hello, world! 출력
+}
+
+int main()
+{
+    hello();    // hello 함수 호출
+
+    return 0;
+}
+[실행 결과]
+Hello, world!
+
+
+--지역변수
+void hello()
+{
+    int num1 = 10;    // 지역 변수. hello 함수가 끝나면 사라짐
+
+    printf("Hello, %d", num1);
+}
+
+int main()
+{
+    hello();
+    printf("%d", num1);    // 컴파일 에러: hello 함수의 지역 변수 num1은
+                           // 함수 hello 안에서만 사용할 수 있음
+
+    return 0;
+}
+
+
+-- 함수 선언과 정의 분리하기
+#include <stdio.h>
+
+int main()
+{
+    hello();    // hello 함수를 찾을 수 없음. 컴파일 에러
+
+    return 0;
+}
+
+void hello()    // 반환값이 없는 hello 함수 선언 및 정의
+{
+    printf("Hello, world!\n");    // Hello, world! 출력
+}
+
+
+#include <stdio.h>
+
+void hello();    // 반환값이 없는 hello 함수 원형 선언
+
+int main()
+{
+    hello();    // hello 함수 호출
+
+    return 0;
+}
+
+void hello()    // 반환값이 없는 hello 함수 정의
+{
+    printf("Hello, world!\n");    // Hello, world! 출력
+}
+
+
+
+-- 정수, 실수, 불 반환값 사용하기
+반환값은 함수를 정의할 때 반환값의 자료형을 지정해주고 함수 안에서 return 키워드로 값을 반환
+
+int one()    // 정수 1을 반환하므로 반환값 자료형은 int를 지정
+{
+    return 1;    // 정수 1을 반환
+}
+
+
+#include <stdio.h>
+
+int one()    // 반환값이 int형인 one 함수 정의
+{
+    return 1;    // 1을 반환
+}
+
+int main()
+{
+    int num1;
+
+    num1 = one();    // int형을 반환했으므로 int형 변수에 저장
+
+    printf("%d\n", num1);    // 1
+
+    return 0;
+}
+실행 결과
+1
+
+
+--함수에서 실수, 불값을 반환
+#include <stdio.h>
+#include <stdbool.h>    // bool, true, false가 정의된 헤더 파일
+
+float realNumber()    // 반환값이 float형인 realNumber 함수 정의
+{
+    return 1.234567f;    // 1.234567: float형을 반환
+}
+
+bool truth()    // 반환값이 bool형인 truth 함수 정의
+{
+    return true;    // true: bool형을 반환
+}
+
+int main()
+{
+    float num1;
+    bool b1;
+
+    num1 = realNumber();    // float형을 반환했으므로 float형 변수에 저장
+    b1 = truth();           // bool형을 반환했으므로 bool형 변수에 저장
+
+    printf("%f\n", num1);   // 1.234567
+    printf("%d\n", b1);     // 1
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
