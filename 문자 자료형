@@ -1,0 +1,111 @@
+--문자 변수에 문자 저장 및 출력
+
+#include <stdio.h>
+
+int main()
+{
+    char c1 = 'a';    // 문자 변수를 선언하고 문자 a를 저장
+    char c2 = 'b';    // 문자 변수를 선언하고 문자 b를 저장
+
+    // char를 %c로 출력하면 문자가 출력되고, %d로 출력하면 정숫값이 출력됨
+    printf("%c, %d\n", c1, c1);    // a, 97: a의 ASCII 코드값은 97
+    printf("%c, %d\n", c2, c2);    // b, 98: b의 ASCII 코드값은 98
+
+    return 0;
+}
+
+	%c : 문자(character)의 약어로 c를 사용
+	
+작은따옴표로 문자를 넣지 않고 정수만으로 문자 자료형을 사용할 수도 있습니다.
+
+#include <stdio.h>
+
+int main()
+{
+    char c1 = 97;    // a의 ASCII 코드값 97 저장
+    char c2 = 98;    // b의 ASCII 코드값 98 저장
+
+    // char를 %c로 출력하면 문자가 출력되고, %d로 출력하면 정숫값이 출력됨
+    printf("%c, %d\n", c1, c1); // a, 97
+    printf("%c, %d\n", c2, c2); // b, 98
+
+    return 0;
+}
+
+ => ASCII 코드값 97, 98은 10진수
+ 
+ -- ASCII 코드값 16진수를 넣어서 문자 자료형을 사용
+
+#include <stdio.h>
+
+int main()
+{
+    char c1 = 0x61;    // a의 ASCII 코드값 0x61 할당
+    char c2 = 0x62;    // b의 ASCII 코드값 0x62 할당
+
+    // char를 %c로 출력하면 문자가 출력되고, %d로 출력하면 정수 값이 출력됨
+    // %x로 출력하면 16진수로 출력됨
+    printf("%c, %d, 0x%x\n", c1, c1, c1);    // a, 97, 0x61
+    printf("%c, %d, 0x%x\n", c2, c2, c2);    // b, 98, 0x62
+
+    return 0;
+}
+
+
+
+-- 문자 자료형에 같은 숫자를 저장한다 하더라도 문자 '0'과 숫자 0은 전혀 다르므로 주의!!!!
+#include <stdio.h>
+
+int main()
+{
+    char c1 = '0';    // 문자 0을 저장(0이지만 ''로 문자 0, o랑 다름) 
+    char c2 = 0;      // 숫자 0을 저장
+
+    printf("%c %d\n", c1, c1);    // 0 48: 문자 상태로 0이 출력됨
+                                  // 문자 0의 ASCII 코드 48이 출력됨
+
+    printf("%c %d\n", c2, c2);    //    0: ASCII 코드 0은 널문자이므로 아무것도 출력되지 않음
+                                  // 정수 0이 출력됨
+
+    return 0;
+}
+
+
+-- 문자는 ASCII 코드 규칙에 의해 정수로 저장되므로 정수처럼 덧셈, 뺄셈 등을 할 수 있음
+
+#include <stdio.h>
+
+int main()
+{
+    printf("%c %d\n", 'a' + 1, 'a' + 1);    // b 98: a는 ASCII 코드값 97이고, 
+                                            // 97에 1을 더하여 98이 되었으므로 b가 출력됨
+
+    printf("%c %d\n", 97 + 1, 97 + 1);      // b 98: ASCII 코드값 97에 1을 더하여 98이 되었으므로                            // b가 출력됨
+
+    return 0;
+}
+
+[실행 결과]
+b 98
+b 98
+
+
+--문자 자료형에는 숫자나 알파벳뿐만 아니라 제어 문자도 저장할 수 있음
+
+#include <stdio.h>
+
+int main()
+{
+    char c1 = 'a';           // 문자 a 할당
+    char c2 = 'b';           // 문자 b 할당 
+    char lineFeed = '\n';    // 제어 문자 \n 할당
+
+    printf("%c%c%c%c", c1, lineFeed, c2, lineFeed);    // 제어 문자도 %c로 출력할 수 있음
+
+    return 0;
+}
+
+[결과]
+a
+b
+
