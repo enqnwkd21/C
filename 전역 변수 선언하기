@@ -1,0 +1,38 @@
+--전역 변수 선언하기
+#include <stdio.h>
+
+int num1 = 10;    // 전역 변수 선언 및 값 초기화
+
+void printGlobal()
+{
+    printf("%d\n", num1);    // 20: main 함수에서 저장한 값이 계속 유지됨
+}
+
+int main()
+{
+    printf("%d\n", num1);    // 10: main 함수에서 전역 변수 num1의 값 출력
+
+    num1 = 20;    // 전역 변수 num1에 20 저장
+           //  printGlobal 함수에서 num1의 값을 출력해보면 main 함수에서 저장한 20이 출력됩니다.
+
+    printGlobal();    // 20: printGlobal 함수에서 전역 변수 num1의 값 출력
+
+    return 0;
+}
+실행 결과
+10
+20
+
+--전역 변수는 초깃값을 지정하지 않으면 0으로 초기화
+#include <stdio.h>
+
+int num1;    // 전역 변수는 초깃값을 지정하지 않으면 0으로 초기화됨
+
+int main()
+{
+    printf("%d\n", num1);    // 0
+
+    return 0;
+}
+실행 결과
+0
